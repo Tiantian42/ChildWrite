@@ -1,0 +1,179 @@
+/* Styles for the image character section */
+.img-char {
+    margin-top: 1em;
+    justify-content: center;
+}
+
+.img-char img {
+    height: 350px;
+    width: 350px;
+    margin-top: 1rem;
+    border-radius: 1rem;
+}
+
+/* Styles for icons */
+i {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Hover styles for icons */
+i:hover {
+    font-size: 35px;
+    cursor: pointer;
+    transition: font-size 0.1s ease-out;
+}
+
+/* Styles for character text */
+.char-text {
+    font-family: 'Cavolini', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative; /* Permanent ung absolute (tapno haan nga mai alis no sabali nga device*/
+
+}
+/* Styles for the canvas section */
+#canvas-part {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: -25em;
+
+}
+
+/* Styles for buttons in the learning section */
+.btn-char-learn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-family: 'Cavolini', sans-serif;
+    font-size: larger;
+    font-weight: 500;
+    margin-top: 1em; /* baba lahat ng button */
+    margin-bottom: 0.5em;
+}
+
+/* General button styles */
+button {
+    background-color: rgb(255, 255, 255, 0.728);
+    height: 50px;
+    width: 150px;
+    font-size: 5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    border-radius: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Hover styles for buttons */
+button:hover {
+    background-color: #f6c960bf;
+    color: rgb(52, 51, 51);
+    transition: background-color 0.1s ease;
+    text-decoration: none;
+    border: none;
+    font-weight: 500;
+}
+
+/* Ung botton ng upload photo */
+.custom-upload-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Cavolini', sans-serif;
+    font-weight: 500;
+}
+
+.custom-upload-button:hover {
+    background-color: #e8e878;
+    color: rgb(52, 51, 51);
+    transition: background-color 0.1s ease;
+    text-decoration: none;
+    border: none;
+    font-weight: 500;
+}
+/* Ung Modal background */
+.modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* scroll */
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1000; /* Sit on top */
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe62;
+    margin: 13% auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 45%;
+    font-size: 30px; /* laki font size */
+    text-align: center;
+    z-index: 1000;
+}
+
+.modal-content h4 {
+    font-size: 40px; /* Larger font size */
+    margin-bottom: -0.5em;
+  }
+
+  .modal-footer {
+    position: fixed; /* Stay in place */
+    right: 47.7%;
+    margin-right:20px;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    transform: translateY(-600px);
+  }
+
+  .modal-success {
+    background-color: #71f69087; /* Light green */
+    border-color: #c3e6cb;
+  }
+  
+  .modal-error {
+    background-color: #fe7b868a; /* Light red */
+    border-color: #f5c6cb;
+  }
+ 
+.modal-close {
+    position: absolute;
+    top: 470px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .modal-close:hover,
+  .modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

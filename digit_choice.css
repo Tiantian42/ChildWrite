@@ -1,0 +1,57 @@
+/* Styles for the option digits section */
+.option-digit {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Styles for the digit buttons */
+.btn-digit {
+    height: 100px;
+    width: 120px;
+    font-size: 2em;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 0.5em;
+}
+
+/* Hover styles for digit buttons */
+.btn-digit:hover {
+    background-color: #98fd79;
+    color: rgb(52, 51, 51);
+    transition: background-color 0.1s ease;
+    text-decoration: none;
+    width: 125px;
+}
+
+/* Styles for digit cards */
+.card {
+    background-color: #98fd79ca;
+    height: 220px;
+    width: 130px;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1em;
+}
+
+/* Hover styles for digit cards */
+.card:hover {
+    background-color: rgb(246, 248, 247);
+    color: rgb(0, 0, 0);
+    transition: background-color 0.1s ease-in-out;
+    text-decoration: none;
+}
+
+/* Styles for the content inside digit cards */
+.card-digit {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+    font-size: 4.5em;
+}
+

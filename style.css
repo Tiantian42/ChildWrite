@@ -1,0 +1,291 @@
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Lateef&family=Poiret+One&display=swap');/* Importing Lateef and Poiret One fonts */
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bubblegum+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bubblegum+Sans&family=Fuzzy+Bubbles:wght@400;700&display=swap');
+
+.abeezee-regular {
+	font-family: "ABeeZee", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+  }
+
+  .fuzzy-bubbles-bold {
+	font-family: "Fuzzy Bubbles", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+  }
+  
+  
+/* HTML and Body Styles */
+html {
+    min-height: 100%; /* Ensure HTML takes up at least the height of the viewport */
+}
+
+body {
+    min-height: 100vh; /* Ensure body takes up at least the height of the viewport */
+    font-family: 'ABeeZee', sans-serif; /* Set font family for text with fallback to sans-serif */
+    text-align: center; /* Center text horizontally within its container */
+    color: #111111; /* Set text color */
+    background: linear-gradient(rgba(255, 255, 255, 0.589), rgba(255, 255, 255, 0.589)), url('images/main/background.jpg'); /* Apply linear gradient overlay on background image */
+    background-size: contain; /* Ensure background image covers entire container */
+}
+
+/* Section Styles */
+section {
+    display: flex; /* Display section content as flexbox */
+    height: 300px; /* Set section height */
+    align-items: center; /* Center items vertically */
+    justify-content: space-evenly; /* Evenly distribute space between items */
+    margin: 20px 0; /* Add margin above and below each section */
+}
+
+/* Prediction Box Styles */
+#prediction {
+	display: none;
+    /* font-family: 'Montserrat', sans-serif; /* Set font family for prediction box */
+    /*width: 300px; /* Set width */
+    /*height: 300px; /* Set height */
+    /*box-sizing: border-box; /* Include padding and border in box's total width and height */
+    /*border: 0.1px solid #111; /* Set border */
+    /*border-radius: 5px; /* Set border radius */
+    /*font-size: 1.5em; /* Set font size */
+    /*line-height: 500px; /* Set line height */
+    /*background-color: #fae3af8a; /* Set background color with transparency */
+    /*font-weight: bold; /* Set font weight */
+    /*display: flex; /* Display contents as flexbox */
+    /*align-items: center; /* Center items vertically */
+    /*justify-content: center; /* Center items horizontally */ 
+}
+
+/* Canvas Styles */
+#main-canvas {
+    border-radius: 5px; /* Set border radius for main canvas */
+    cursor: pointer; /* Set cursor style */
+}
+
+#small-canvas, #small-main-canvas {
+    display: none; /* Hide small canvas elements */
+}
+
+/* Button Styles */
+button {
+    font: inherit; /* Use inherited font */
+    text-transform: uppercase; /* Convert text to uppercase */
+    height: 40px; /* Set button height */
+    padding: 0 16px; /* Set padding */
+    border: 0.5px solid #111; /* Set border */
+    border-radius: 4px; /* Set border radius */
+    background: none; /* Transparent background */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Set cursor style */
+    transition: all 0.3s; /* Add transition effects */
+}
+
+button:hover {
+    background-color: #111; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Styles for title */
+.title {
+    font-size: 70px; /* Sets the font size for both main and regular titles */
+}
+
+.h-title
+{
+	font-size: 70px;
+	font-family: 'Fuzzy Bubbles', sans-serif; /* Sets the font family for regular titles */
+	font-weight: bold;
+    margin-top: 3rem; /* Resets the top margin to remove any default spacing */
+    margin-bottom: -3rem; /* Adds spacing below regular titles */
+    padding-bottom: 7px; /* Adds padding at the bottom of regular titles */
+	color: #b8e0ad; /* Sets the text color to white */
+	-webkit-text-stroke: 1px #4d3712; /* Adds a 1px black border around each letter */
+    text-shadow: 3px 3px 3px #583f0ce5; /* Adds a black outline around the text */
+}
+/* Styles for regular titles (CHILD WHITE) */
+.title {
+	font-family: 'Fuzzy Bubbles', sans-serif; /* Sets the font family for regular titles */
+	font-weight: bold;
+    margin-top: 8rem; /* Resets the top margin to remove any default spacing */
+    margin-bottom: -3rem; /* Adds spacing below regular titles */
+    padding-bottom: 7px; /* Adds padding at the bottom of regular titles */
+	color: #b8e0ad; /* Sets the text color to white */
+	-webkit-text-stroke: 1px #4d3712; /* Adds a 1px black border around each letter */
+    text-shadow: 3px 3px 3px #583f0ce5; /* Adds a black outline around the text */
+}
+
+.navbar {
+	display: flex;
+	background-color: #fae3af94;
+	justify-content: space-between;
+	height: 110px;
+}
+
+/* Styles for title */
+.title_learn_test {
+    font-size: 60px; /* Sets the font size for both main and regular titles */
+}
+
+/* Styles for regular titles (Test and Lern) */
+.title_learn_test {
+	font-family: 'Fuzzy Bubbles', sans-serif; /* Sets the font family for regular titles */
+	font-weight: bold;
+	padding-top: 5px; /* Adds padding at the bottom of regular titles */
+    margin-top: 0rem; /* Resets the top margin to remove any default spacing */
+	color: #b8e0ad; /* Sets the text color to white */
+	-webkit-text-stroke: 1px #4d3712; /* Adds a 1px black border around each letter */
+    text-shadow: 3px 3px 3px #583f0ce5; /* Adds a black outline around the text */
+}
+.navbar_1 {
+	display: flex;
+	background-color: #fae3af94;
+	justify-content: space-between;
+	height: 75px;
+	
+}
+.btn-home {
+	background-color: rgba(255, 255, 255, 0.751);
+	height: 220px;
+	width: 420px;
+	font-size: 5rem;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(0, 0, 0);
+	border-radius: 0.5em;
+	margin-bottom: 0em;
+	scale: .89;
+}
+
+.btn-home:hover {
+	background-color: #7ce794bd;
+	color: rgb(255, 255, 255);
+	transition: background-color 0.1s ease;
+	text-decoration: none;
+}
+
+.home-buttons {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.p-home {
+    font-family: 'ABeeZee', sans-serif; /* Sets the font family for the element /Instructions */
+    margin-top: -0.2em; /* Adds margin space above the element */
+    margin-bottom: 0.2em; /* Adds margin space below the element */
+    font-weight: 600; /* Sets the font weight to 600 (bold) */
+    font-size: 4rem; /* Sets the font size to 3rem */
+    color: rgb(255, 255, 255); /* Sets the text color */
+	-webkit-text-stroke: 1px #05381d; /* Adds a 1px black border around each letter */
+}
+
+.p-learn_test {
+    font-family: 'ABeeZee', sans-serif; /* Sets the font family for the element /Instructions */
+    margin-top: 1em; /* Adds margin space above the element */
+    margin-bottom: 1em; /* Adds margin space below the element */
+    font-weight: 600; /* Sets the font weight to 600 (bold) */
+    font-size: 3rem; /* Sets the font size to 3rem */
+    color: rgb(0, 0, 0); /* Sets the text color */
+}
+
+/* DROP DOWN */
+
+.dropbtn {
+	scale: 1.3;
+	font-weight: bold;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid black 3px;
+	border-radius: 0px;
+	transition: all .3s;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+	scale: 1.4;
+  }
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	margin: 2px 20px;
+	padding: 5px 10px;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 190px;
+	font-size: 1.8rem;
+	overflow: auto;
+	transition: all 0.3s;
+	--webkit-transition: all 0.3s;
+	--moz-transition: all 0.3s;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	border-radius: 10px;
+}
+
+.dropdown-content a {
+	background-color: rgb(52, 51, 51);
+	color: white;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+/* Choice botton*/
+.dropdown a:hover {
+	background-color: #ddd;
+	background-color: #f6c960bf;
+	color: rgb(52, 51, 51);
+}
+
+.show {
+	display: block;
+}
+
+.grp-title {
+    display: inline-block; /* Allows the element to be displayed inline with other elements */
+    width: 50%; /* Sets the width of the element to 50% of its container */
+    text-align: left; /* Aligns the text to the left within the element */
+    transform: scale(0.8); /* Scales down the size of the element to 80% of its original size */
+	margin-top: -4em;
+}
+
+.grp-dropdown{
+	display: flex;
+	justify-content: flex-end;
+	width: -50%;
+	align-items: center;
+}
+/* Instructionsssss */
+.instruction-container {
+	background: #ffffffa4;
+	padding: 10px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 1100px;
+	margin: auto;
+}
+.instruction-header {
+	font-size: 24px;
+	color: #0b8613;
+	-webkit-text-stroke: 0.7px #05381d;
+	margin-bottom: 20px;
+	margin-top: 0.5em;
+}
+.instruction-content {
+	font-size: 16px;
+	color: #000000;
+}
+.instruction-content ul {
+	padding-left: 10px;
+}
+.instruction-content mark {
+	background-color: rgba(255, 251, 0, 0.219);
+}
+

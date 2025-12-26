@@ -1,0 +1,49 @@
+/* Body styles */
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Styles for the characters section */
+.characters {
+    height: 70vh;
+    width: 100vw;
+}
+
+/* Styles for the option characters section */
+.option-char {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Styles for each part of the character options */
+.part {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+}
+
+/* Styles for the character selection buttons */
+.btn-char {
+    height: 100px;
+    width: 120px;
+    font-size: 3em;
+    margin-bottom: 0.2em;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 0.5em;
+    margin-right: 1em;
+    border: none;
+}
+
+/* Hover styles for the character selection buttons */
+.btn-char:hover {
+    background-color: hsl(123, 97%, 73%);
+    color: rgb(52, 51, 51);
+    transition: background-color 0.1s ease;
+    text-decoration: none;
+    width: 130px;
+    font-size: 4em;
+}
