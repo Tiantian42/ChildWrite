@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Set the title of the webpage -->
+  <title>CHILD WRITE - Letter Test</title>
+  
+  <!-- Import TensorFlow.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"></script>
+  
+  <!-- Import custom stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Import another custom stylesheet specific to character testing -->
+  <link rel="stylesheet" href="/character_test.css">
+  
+  <!-- Import Font Awesome icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- Import Montserrat font from Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  
+  <!-- Import Bootstrap CSS framework -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- Import jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <!-- Set shortcut icon -->
+  <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+  <nav class="navbar_1 navbar-light bg-light" style="display: block; scale: 1.15">
+    <!-- Titles -->
+      <h1 class="title_learn_test" style="display: block;">Alphabet Test</h1>
+  </nav>
+
+  <div class="bio">
+    <p class="p-learn_test">
+      Start writing on the canvas without any hint and see your score.
+    </p>
+  </div>
+
+  <!-- Audio source for pronunciation -->
+  <span onclick="loadAudio()"><i class='fas fa-volume-up'></i></span>
+  <audio autoplay id="audio">
+    <source id="audio_source" src="" type="audio/ogg">
+  </audio>
+
+  <!-- <div style="display: flex; justify-content: space-between;"> -->
+    <p id="writingDigit" style="font-size: 0%; font-weight: bold; display: none;"></p>
+    <!-- </div> -->
+    <div class="char-text">
+      <p id="writingDigit_text_eng" style="font-size: 0%; font-weight: bold; display: inline;"></p>
+  
+    </div>
+
+  <!-- canvas for drawing and showing the percentage -->
+  <section id="canvas-part">
+    <!-- Main canvas for writing -->
+    <canvas id="main-canvas" width="350" height="350"></canvas>
+     <!-- Small canvas for displaying the main canvas's content (scaled down) -->
+    <canvas id="small-main-canvas" width="28" height="28"></canvas>
+     <!-- Small canvas for displaying predictions -->
+    <canvas id="small-canvas" width="28" height="28"></canvas>
+    <!-- Div for displaying prediction results -->
+    <div id="prediction" style="line-height: normal;"></div>
+  </section>
+
+  
+  <div style="padding-left: 1%;">
+    <!-- Heading for displaying labels -->
+    <h2 id="label"></h2>
+  </div>
+
+  <div class="btn-char-test">
+    <!-- Buttons for controlling character testing -->
+    <button id="erase">Erase</button>
+    <button id="predict">Check</button>
+    <!-- <button id="tryAnother">Next</button> -->
+    <button id="back" onclick="goBack()">Back</button>
+  </div>
+
+  <!-- Hidden file input -->
+  <input type="file" id="upload-input" accept="image/*" style="display: none;">
+  <!-- Custom button -->
+  <label for="upload-input" class="custom-upload-button">Upload Image</label>
+
+ <!-- PopUp -->
+ <div class="popup">
+  <span class="popuptext" id="myPopup">Try Again! You have to score at least 6.</span>
+</div>
+
+<!-- Modal  -->
+<div id="predictionModal" class="modal">
+  <div class="modal-content">
+    <h4>-- Result --</h4>
+    <p id="predictionText"></p>
+  </div>
+  <div class="modal-footer">
+    <button id="modalClose" class="modal-close">Try Again</button>
+  </div>
+  <div class="modal-footer2">
+    <button id="tryAnother" class="modal-close" disabled>Next</button>
+  </div>
+</div>
+
+<!-- Scores  -->
+<div id="scores-container">
+  <button class="collapsible">Recent Scores</button>
+  <div class="content">
+  <ol id="scores-list"></ol>
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar" style="width: 0%;"></div>
+  </div>
+  </div>
+</div>
+
+  <script src="/image_class.js"></script>
+  <script src="/predict_character_test.js"></script>
+  <script>
+
+  $("#tryAnother").on('click', function () {
+      erase(); // Calls a function to erase the current content
+      random_digit(); // Calls a function to generate a new random digit
+  });
+
+// Function to play audio
+function loadAudio() {
+    document.getElementById('audio').play();
+}
+
+// Function to navigate back to the character page
+function goBack() {
+    location.href = "/character"
+}
+
+  </script>
+  <!-- for dropdown -->
+  <script>
+
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction(value) {
+      if(value == 'character') {
+        document.getElementById("myDropdown-character").classList.toggle("show");
+      }
+      else if(value == 'digit') {
+        document.getElementById("myDropdown-digit").classList.toggle("show");
+      } 
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn-character')) {
+        var dropdowns = document.getElementsByClassName("dropdown-character");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+      if (!event.target.matches('.dropbtn-digit')) {
+        var dropdowns = document.getElementsByClassName("dropdown-digit");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Set the title of the webpage -->
+  <title>CHILD WRITE - Choose an Alphabet</title>
+  <!-- Import TensorFlow.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"></script>
+  <!-- Import Montserrat font from Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <!-- Import Bootstrap CSS framework -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Import jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Import Font Awesome icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Import custom stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+  <!-- Import another custom stylesheet -->
+  <link rel="stylesheet" href="/character_choice.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <!-- Titles -->
+    <div class="grp-title">
+      <h1 class="title">CHILD WRITE</h1>
+    </div>
+    
+    <!-- dropdowns -->
+    <div class="grp-dropdown">
+      <div class="dropdown">
+        <!-- Dropdown button for alphabets -->
+        <button onclick="myFunction('character')" class="dropbtn dropbtn-character btn-digit-learn">Alphabets <i class="fas fa-angle-down"></i>
+        </button>
+        <!-- Dropdown content for alphabets -->
+        <div id="myDropdown-character" class="dropdown-content dropdown-character">
+          <a href="/character/learn"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            Learn</a>
+          <a href="/character/test"><i class="fa fa-pen" aria-hidden="true"></i>
+            Test</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <!-- Dropdown button for digits -->
+        <button onclick="myFunction('digit')" class="dropbtn dropbtn-digit btn-digit-learn">Digit <i class="fas fa-angle-down"></i></i>
+        </button>
+        <!-- Dropdown content for digits -->
+        <div id="myDropdown-digit" class="dropdown-content dropdown-digit">
+          <a href="/digit/learn"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            Learn</a>
+          <a href="/digit/test"><i class="fa fa-pen" aria-hidden="true"></i>
+            Test</a>
+        </div>
+      </div>
+
+      <!-- Back button -->
+      <button id="back" style="margin-left: 2rem;" class="dropbtn dropbtn-digit btn-digit-learn" onclick="goBack()"><i class="fa fa-angle-left" aria-hidden="true"></i> Back</button>
+    </div>
+  </nav>
+  <div class="bio">
+    <p class="p-home">
+      Choose one from the 26 Letters and start practicing.</p>
+  </div>
+  
+  <!-- <button id="back" onclick="goBack()">Back</button> -->
+  <div class="characters">
+    <section id="character-option-part" class="option-char">
+      <!-- This section contains groups of buttons -->
+      <div class="part">
+         <!-- Group of buttons for characters A to G -->
+        <button onclick="learn(0)" class="btn-char">A</button>
+        <button onclick="learn(1)" class="btn-char">B</button>
+        <button onclick="learn(2)" class="btn-char">C</button>
+        <button onclick="learn(3)" class="btn-char">D</button>
+        <button onclick="learn(4)" class="btn-char">E</button>
+        <button onclick="learn(5)" class="btn-char">F</button>
+        <button onclick="learn(6)" class="btn-char">G</button></div>
+      <div class="part">
+        <!-- Group of buttons for characters H to N -->
+        <button onclick="learn(7)" class="btn-char">H</button>
+        <button onclick="learn(8)" class="btn-char">I</button>
+        <button onclick="learn(9)" class="btn-char">J</button>
+        <button onclick="learn(10)" class="btn-char">K</button>
+        <button onclick="learn(11)" class="btn-char">L</button>
+        <button onclick="learn(12)" class="btn-char">M</button>
+        <button onclick="learn(13)" class="btn-char">N</button></div>
+      <div class="part">
+        <!-- Group of buttons for characters O to U -->
+        <button onclick="learn(14)" class="btn-char">O</button>
+        <button onclick="learn(15)" class="btn-char">P</button>
+        <button onclick="learn(16)" class="btn-char">Q</button>
+        <button onclick="learn(17)" class="btn-char">R</button>
+        <button onclick="learn(18)" class="btn-char">S</button>
+        <button onclick="learn(19)" class="btn-char">T</button>
+        <button onclick="learn(20)" class="btn-char">U</button></div>
+      <div class="part">
+        <!-- Group of buttons for characters V to Z -->
+        <button onclick="learn(21)" class="btn-char">V</button>
+        <button onclick="learn(22)" class="btn-char">W</button>
+        <button onclick="learn(23)" class="btn-char">X</button>
+        <button onclick="learn(24)" class="btn-char">Y</button>
+        <button onclick="learn(25)" class="btn-char">Z</button></div>
+    </section>
+  </div>
+ 
+  <script>
+      function learn(character) {
+          location.href = `/character/learn?choice=${character}`;
+      }
+      function goBack() {
+        location.href="/character"
+      }
+  </script>
+  <script>
+    
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction(value) {
+      if(value == 'character') {
+        document.getElementById("myDropdown-character").classList.toggle("show");
+      }
+      else if(value == 'digit') {
+        document.getElementById("myDropdown-digit").classList.toggle("show");
+      } 
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn-character')) {
+        var dropdowns = document.getElementsByClassName("dropdown-character");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+      if (!event.target.matches('.dropbtn-digit')) {
+        var dropdowns = document.getElementsByClassName("dropdown-digit");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+  
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Set the title of the webpage -->
+  <title>CHILD WRITE - Choose a Digit</title>
+  
+  <!-- Import TensorFlow.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"></script>
+  
+  <!-- Import Bootstrap CSS framework -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- Import jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <!-- Import Montserrat font from Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  
+  <!-- Import Font Awesome icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- Import custom stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Import another custom stylesheet specific to digit choice -->
+  <link rel="stylesheet" href="/digit_choice.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+    <!-- Titles -->
+    <div class="grp-title">
+      <h1 class="title">CHILD WRITE</h1>
+    </div>
+
+    <!-- dropdowns -->
+    <div class="grp-dropdown">
+      <div class="dropdown">
+        <!-- Dropdown button for alphabets -->
+        <button onclick="myFunction('character')" class="dropbtn dropbtn-character btn-digit-learn">Alphabets <i class="fas fa-angle-down"></i></button>
+        <!-- Dropdown content for alphabets -->
+        <div id="myDropdown-character" class="dropdown-content dropdown-character">
+          <a href="/character/learn"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            Learn</a>
+          <a href="/character/test"><i class="fa fa-pen" aria-hidden="true"></i>
+            Test</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <!-- Dropdown button for digits -->
+        <button onclick="myFunction('digit')" class="dropbtn dropbtn-digit btn-digit-learn">Digits <i class="fas fa-angle-down"></i></i>
+        </button>
+        <!-- Dropdown content for digits -->
+        <div id="myDropdown-digit" class="dropdown-content dropdown-digit">
+          <a href="/digit/learn"></i>
+            Learn</a>
+          <a href="/digit/test"></i>
+            Test</a>
+        </div>
+      </div>
+
+      <!-- Back button -->
+      <button id="back" style="margin-left: 2rem;" class="dropbtn dropbtn-digit btn-digit-learn" onclick="goBack()"><i class="fa fa-angle-left" aria-hidden="true"></i> Back</button>
+    </div>
+  </nav>
+  <div class="bio">
+    <p class="p-home">
+      Choose one of the 10 Digits and start practicing.</p>
+  </div>
+
+  <section id="option-part" class="option-digit">
+    <!-- Cards for each digit -->
+    <div class="card">
+      <!-- Display the digit -->
+      <div class="card-digit">0</div>
+      <!-- Button to start practicing the digit -->
+      <button onclick="learn(0)" class="btn-digit btn-0">Zero</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">1</div>
+      <button onclick="learn(1)" class="btn-digit btn-1">One</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">2</div>
+      <button onclick="learn(2)" class="btn-digit btn-2">Two</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">3</div>
+      <button onclick="learn(3)" class="btn-digit btn-3">Three</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">4</div>
+      <button onclick="learn(4)" class="btn-digit btn-4">Four</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">5</div>
+      <button onclick="learn(5)" class="btn-digit btn-5">Five</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">6</div>
+      <button onclick="learn(6)" class="btn-digit btn-6">Six</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">7</div>
+      <button onclick="learn(7)" class="btn-digit btn-7">Seven</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">8</div>
+      <button onclick="learn(8)" class="btn-digit btn-8">Eight</button>
+    </div>
+    <div class="card">
+      <div class="card-digit">9</div>
+      <button onclick="learn(9)" class="btn-digit btn-9">Nine</button>
+    </div>
+  </section>
+
+  <script>
+    // Function to redirect the user to the learn page for a specific digit
+    function learn(digit) {
+      location.href = `/digit/learn?choice=${digit}`;
+    }
+
+    // Function to navigate back to the digit selection page
+    function goBack() {
+      location.href = "/digit"
+    }
+  </script>
+
+  <script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction(value) {
+      if(value == 'character') {
+        document.getElementById("myDropdown-character").classList.toggle("show");
+      }
+      else if(value == 'digit') {
+        document.getElementById("myDropdown-digit").classList.toggle("show");
+      } 
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn-character')) {
+        var dropdowns = document.getElementsByClassName("dropdown-character");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+      if (!event.target.matches('.dropbtn-digit')) {
+        var dropdowns = document.getElementsByClassName("dropdown-digit");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+
+</body>
+
+</html>

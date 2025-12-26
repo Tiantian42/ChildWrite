@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Set the title of the webpage -->
+  <title>CHILD WRITE - Learn the Alphabets</title>
+
+  <!-- Import TensorFlow.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"></script>
+  
+  <!-- Import custom stylesheet (check style.css) -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Import another custom stylesheet specific to character learning (check character_learn.css)-->
+  <link rel="stylesheet" href="/character_learn.css">
+  
+  <!-- Import Font Awesome kit -->
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  
+  <!-- Import Montserrat font from Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  
+  <!-- Import Font Awesome icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- Import Bootstrap CSS framework -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- Import jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar_1 navbar-light bg-light" style="display: block; scale: 1.15">
+    <!-- Titles -->
+      <h1 class="title_learn_test" style="display: block;">Alphabet Learn</h1>
+  </nav>
+
+  <div class="bio">
+    <p class="p-learn_test">
+      Look at the image and try to draw it on the canvas yourself.</p>
+  </div>
+
+  <span onclick="loadAudio()"><i class='fas fa-volume-up'></i></span>
+  <audio autoplay id="audio">
+    <!-- Audio source for pronunciation -->
+    <source src="/audio/character/<%= digit %>.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="img-char">
+    <!-- Display the digit image -->
+    <p id="writingDigit" style="font-size: 200%; font-weight: bold; display: none;">
+      <%= digit %>
+    </p>
+    <img src="/images/characters/<%= digit %>.png" width="350" height="350"></img>
+  </div>
+
+<!-- Ung container nga para permanent place yang canvas -->
+<div class="container">
+  <section id="canvas-part">
+    <!-- Main canvas for drawing -->
+    <canvas id="main-canvas" width="350" height="350"></canvas>
+    <!-- Small canvas for displaying drawn character -->
+    <canvas id="small-main-canvas" width="28" height="28"></canvas>
+    <!-- Small canvas for prediction display -->
+    <canvas id="small-canvas" width="28" height="28"></canvas>
+    <!-- Display predictions -->
+    <div id="prediction" style="line-height: normal;"></div>
+  </section>
+</div>
+
+  <div style="padding-left: 1%;">
+    <!-- Heading for displaying labels -->
+    <h2 id="label"></h2>
+  </div>
+  
+  <!-- Canvas buttons section -->
+  <div class="btn-char-learn">
+    <!-- Buttons for controlling canvas actions -->
+    <button id="prev">Previous</button>
+    <button id="erase">Erase</button>
+    <button id="predict">Check</button>
+    <button id="next">Next</button>
+    <button id="back" onclick="goBack()">Back</button>
+  </div>  
+
+  <!-- Hidden file input (eto ung upload)-->
+  <input type="file" id="upload-input" accept="image/*" style="display: none;">
+  <!-- Custom button (asa css)-->
+  <label for="upload-input" class="custom-upload-button">Upload Image</label>
+
+  <!-- Modal -->
+  <div id="predictionModal" class="modal">
+    <div class="modal-content">
+      <h4>-- Result --</h4>
+      <p id="predictionText"></p>
+    </div>
+    <div class="modal-footer">
+      <button id="modalClose" class="modal-close">Try Again</button>
+    </div>
+
+  </div>
+
+  <!-- Include external JavaScript file for image classification -->
+  <script src="/image_class.js"></script>
+  <!-- Include external JavaScript file for predicting characters during learning -->
+  <script src="/predict_character_learn.js"></script>
+  <script>
+
+
+    function goBack() {
+      // Redirects the user to the "character learn" page
+      location.href = "/character/learn"
+    }
+
+    $(document).ready(function () {
+      // Check if the displayed character is 0 or 25 and hide corresponding navigation buttons
+      if ($("#writingDigit").text() == 0) {
+        $("#prev").hide();
+      }
+      else if ($("#writingDigit").text() == 25) {
+        $("#next").hide();
+      } 
+    });
+
+    // Redirect to the next character's learning page
+    $("#next").on('click', function () {
+      location.href = `/character/learn?choice=${parseInt($("#writingDigit").text()) + 1}`;
+    });
+
+    // Redirect to the previous character's learning page
+    $("#prev").on('click', function () {
+      location.href = `/character/learn?choice=${parseInt($("#writingDigit").text()) - 1}`;
+    });
+
+    // Play the pronunciation audio
+    function loadAudio() {
+      document.getElementById('audio').play();
+    }
+  </script>
+  
+  <!-- for dropdown -->
+  <script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction(value) {
+      if(value == 'character') {
+        document.getElementById("myDropdown-character").classList.toggle("show");
+      }
+      else if(value == 'digit') {
+        document.getElementById("myDropdown-digit").classList.toggle("show");
+      } 
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn-character')) {
+        var dropdowns = document.getElementsByClassName("dropdown-character");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+      if (!event.target.matches('.dropbtn-digit')) {
+        var dropdowns = document.getElementsByClassName("dropdown-digit");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+
+</body>
+
+</html>

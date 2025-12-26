@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CHILD WRITE</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"> </script>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <h1>Digit Recognition</h1>
+  
+  <section>
+    <canvas id="main-canvas" width="350" height="350"></canvas>
+    <canvas id="small-main-canvas" width="28" height="28"></canvas>
+    <canvas id="small-canvas" width="28" height="28"></canvas>
+    <div id="prediction"></div>
+    <h2 id="label"></h2>
+  </section>
+
+  <button id="erase">Erase</button>
+  <button id="predict">Check</button>
+  <script src="/predict.js"></script>
+  <script src="/image_class.js"></script>
+</body>
+
+</html>

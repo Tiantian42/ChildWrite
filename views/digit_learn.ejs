@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Title of the document -->
+  <title>CHILD WRITE - Learn Digits</title>
+  
+  <!-- TensorFlow.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"></script>
+  
+  <!-- Custom CSS stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/digit_learn.css">
+  
+  <!-- Font Awesome icons -->
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  
+  <!-- Google Fonts - Montserrat -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  
+  <!-- Bootstrap CSS library -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <!-- Font Awesome CSS library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar_1 navbar-light bg-light" style="display: block; scale: 1.15">
+    <!-- Titles -->
+      <h1 class="title_learn_test" style="display: block;">Digit Learn</h1>
+    
+  </nav>
+  <div class="bio">
+    <p class="p-learn_test">
+      Start practicing the digit by drawing on the white canvas</p>
+  </div>
+  
+  <span onclick="loadAudio()"><i class='fas fa-volume-up'></i></span>
+  <audio autoplay id="audio">
+    <!-- Audio source for pronunciation -->
+    <source src="/audio/digits/<%= digit %>.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="img-char">
+    <!-- Display the digit image -->
+    <p id="writingDigit" style="font-size: 200%; font-weight: bold; display: none;">
+      <%= digit %>
+    </p>
+    <img src="/images/digits/<%= digit %>-1.png" width="350" height="350"></img>
+  </div>
+
+  <div class="char-text">
+    <!-- Display digit spell -->
+    <p id="writingDigit_text_eng" style="font-size: 200%; font-weight: bold; display: inline;">
+      <%= english %>
+    </p>
+  </div>
+ 
+<div class="container">
+  <section id="canvas-part">
+    <!-- Main canvas for drawing -->
+    <canvas id="main-canvas" width="350" height="350"></canvas>
+    <!-- Small canvas for displaying drawn character -->
+    <canvas id="small-main-canvas" width="28" height="28"></canvas>
+    <!-- Small canvas for prediction display -->
+    <canvas id="small-canvas" width="28" height="28"></canvas>
+    <!-- Display predictions -->
+    <div id="prediction" style="line-height: normal;"></div>
+  </section>
+</div>
+
+<div style="padding-left: 1%;">
+  <!-- Heading for displaying labels -->
+  <h2 id="label"></h2>
+</div>
+
+  <!-- Canvas buttons section -->
+  <div class="btn-digit-learn">
+    <!-- Buttons for controlling canvas actions -->
+    <button id="prev">Previous</button>
+    <button id="erase">Erase</button>
+    <button id="predict">Check</button>
+    <button id="next">Next</button>
+    <!-- Button for going back -->
+    <button id="back" onclick="goBack()">Back</button>
+  </div>  
+
+  <!-- Hidden file input -->
+  <input type="file" id="upload-input" accept="image/*" style="display: none;">
+  <!-- Custom button -->
+  <label for="upload-input" class="custom-upload-button">Upload Image</label>
+  
+  <!-- Modal -->
+  <div id="predictionModal" class="modal">
+    <div class="modal-content">
+      <h4>-- Result --</h4>
+      <p id="predictionText"></p>
+    </div>
+    <div class="modal-footer">
+      <button id="modalClose" class="modal-close">Try Again</button>
+    </div>
+
+  </div>
+  <script src="/predict_digit_learn.js"></script>
+  <script src="/image_class.js"></script>
+  
+  <script>
+
+    function goBack() {
+      location.href = "/digit/learn"
+    }
+    $(document).ready(function () {
+      // Check if the writingDigit text content is 0, then hide the #prev element
+      if ($("#writingDigit").text() == 0) {
+        $("#prev").hide();
+      }
+      // Check if the writingDigit text content is 9, then hide the #next element
+      else if ($("#writingDigit").text() == 9) {
+        $("#next").hide();
+      }
+    });
+
+    // Redirect to the next digits learning page
+    $("#next").on('click', function () {
+      location.href = `/digit/learn?choice=${parseInt($("#writingDigit").text()) + 1}`;
+    });
+
+    // Redirect to the previous digits learning page
+    $("#prev").on('click', function () {
+      location.href = `/digit/learn?choice=${parseInt($("#writingDigit").text()) - 1}`;
+    });
+
+    // Play the pronunciation audio
+    function loadAudio() {
+      document.getElementById('audio').play();
+    }
+
+  </script>
+  <!-- for dropdown -->
+  <script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction(value) {
+      if(value == 'character') {
+        document.getElementById("myDropdown-character").classList.toggle("show");
+      }
+      else if(value == 'digit') {
+        document.getElementById("myDropdown-digit").classList.toggle("show");
+      }
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn-character')) {
+        var dropdowns = document.getElementsByClassName("dropdown-character");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+      if (!event.target.matches('.dropbtn-digit')) {
+        var dropdowns = document.getElementsByClassName("dropdown-digit");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+    
+</body>
+
+</html>
