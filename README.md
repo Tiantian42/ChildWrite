@@ -5,6 +5,7 @@
 #ChildWrite
 
 Handwriting Recognition Tool
+
 Project Overview
 This is a localhost handwriting recognition tool designed specifically for children. The goal is to keep the experience simple, clean, and accessible anywhere by prioritizing an offline-first approach.
 
