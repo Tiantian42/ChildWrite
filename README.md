@@ -1,15 +1,19 @@
-ChildWrite
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/68cc9cd3-4c65-4a4a-8cf6-0f14ac579fb6" alt="Logo" width="462" height="122">
+</p>
+
+#ChildWrite
 
 Handwriting Recognition Tool
 Project Overview
 This is a localhost handwriting recognition tool designed specifically for children. The goal is to keep the experience simple, clean, and accessible anywhere by prioritizing an offline-first approach.
 
-Key Features
+#Key Features
 Offline-First: Designed to run on localhost without requiring an internet connection.
 
 Smooth Performance: Logic handled with vanilla JavaScript to ensure the recognition is fast and responsive.
 
 Child Friendly UI: Clean styling using CSS to provide a focused and distraction-free environment.
 
-Project Goals
+#Project Goals
 This tool aims to provide children with a digital canvas to practice their handwriting while receiving real-time feedback, all while ensuring the software remains lightweight enough to run on any standard personal computer.
